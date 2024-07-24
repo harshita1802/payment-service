@@ -1,5 +1,6 @@
 package dev.harshita.PaymentService.controller;
 
+import com.stripe.exception.StripeException;
 import dev.harshita.PaymentService.dto.PaymentLinkRequestDto;
 import dev.harshita.PaymentService.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping
-    public ResponseEntity generatePaymentLink(@RequestBody PaymentLinkRequestDto paymentLinkRequestDto){
-
-        return ResponseEntity.ok(paymentService.generatePaymentLink(paymentLinkRequestDto));
+    public ResponseEntity generatePaymentLink(@RequestBody PaymentLinkRequestDto paymentLinkRequestDto) throws StripeException {
+        String link = paymentService.generatePaymentLink(paymentLinkRequestDto);
+        return ResponseEntity.ok(link);
     }
 }

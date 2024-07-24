@@ -1,4 +1,4 @@
-package dev.harshita.PaymentService.service;
+package dev.harshita.PaymentService.dto;
 
 import lombok.Getter;
 import lombok.Setter;

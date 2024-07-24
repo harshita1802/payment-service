@@ -1,6 +1,6 @@
 package dev.harshita.PaymentService.client;
 
-import dev.harshita.PaymentService.service.UserResponseDto;
+import dev.harshita.PaymentService.dto.UserResponseDto;
 
 import java.util.UUID;
 
