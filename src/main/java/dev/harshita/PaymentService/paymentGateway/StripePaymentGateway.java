@@ -21,6 +21,9 @@ public class StripePaymentGateway implements PaymentGateway{
     @Value("${STRIPE_SECRET_KEY}")
     private String secretKey;
 
+    @Value("${REDIRECT_URL}")
+    private String callbackUrl;
+
     @Override
     public String createPaymentLink(UUID orderId, long amount) throws StripeException {
         Stripe.apiKey = secretKey;
@@ -51,7 +54,7 @@ public class StripePaymentGateway implements PaymentGateway{
                                         .setType(PaymentLinkCreateParams.AfterCompletion.Type.REDIRECT)
                                         .setRedirect(
                                                 PaymentLinkCreateParams.AfterCompletion.Redirect.builder()
-                                                        .setUrl("https://scaler.com")
+                                                        .setUrl(callbackUrl)
                                                         .build()
                                         )
                                         .build()
